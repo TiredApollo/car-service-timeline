@@ -1,0 +1,24 @@
+# ============================================================
+# Car Service Timeline — Docker Compose for TrueNAS SCALE
+# ============================================================
+#
+# BEFORE USING: Replace YOUR_GITHUB_USERNAME below with your
+# actual GitHub username (lowercase).
+#
+# Example: if your GitHub is "DaimlerNL", change the image to:
+#   ghcr.io/daimernl/car-service-timeline:latest
+#
+# ============================================================
+
+services:
+  car-timeline:
+    image: ghcr.io/YOUR_GITHUB_USERNAME/car-service-timeline:latest
+    container_name: car-timeline
+    ports:
+      - "3100:3000"
+    volumes:
+      - /mnt/tank/apps/car-timeline-data:/app/data
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    restart: unless-stopped

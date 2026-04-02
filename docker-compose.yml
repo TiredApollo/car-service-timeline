@@ -1,0 +1,12 @@
+services:
+  car-timeline:
+    build: .
+    container_name: car-timeline
+    ports:
+      - "3100:3000"
+    volumes:
+      - ./data:/app/data   # SQLite database persists here
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    restart: unless-stopped
